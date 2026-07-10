@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sipalki-Do La Pampa - Agrupación YONG</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Sitio oficial de la Agrupación YONG de Sipalki-Do en La Pampa. Defensa personal real, arte marcial coreano tradicional, historia, armas y horarios de entrenamiento.">
+  <meta name="keywords" content="Sipalki, Sipalki-Do, La Pampa, Santa Rosa, Agrupacion Yong, defensa personal, arte marcial coreano, Ruben Tellechea, Martin Zabala, Lucas Rodriguez">
+  <meta name="author" content="Agrupación YONG">
+  
+  <!-- Prevent indexing during development -->
+  <meta name="robots" content="noindex, nofollow">
+  
+  <style>
+    /* Lock screen styling */
+    body.locked {
+      overflow: hidden !important;
+      background: #0f111a !important;
+    }
+    body.locked > *:not(#gatekeeper-overlay) {
+      display: none !important;
+    }
+    #gatekeeper-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #0f111a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999999;
+      font-family: 'Outfit', 'Inter', sans-serif;
+      color: #ffffff;
+    }
+    .gatekeeper-card {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 40px;
+      border-radius: 16px;
+      text-align: center;
+      max-width: 420px;
+      width: 90%;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    }
+    .gatekeeper-card h2 {
+      margin: 15px 0 10px 0;
+      color: #ffb703;
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    .gatekeeper-card p {
+      color: #a0a5b5;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin-bottom: 30px;
+    }
+    .gatekeeper-input {
+      width: 100%;
+      padding: 14px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(0, 0, 0, 0.4);
+      color: #ffffff;
+      font-size: 1.1rem;
+      text-align: center;
+      margin-bottom: 20px;
+      box-sizing: border-box;
+      transition: all 0.3s ease;
+    }
+    .gatekeeper-input:focus {
+      outline: none;
+      border-color: #ffb703;
+      box-shadow: 0 0 10px rgba(255, 183, 3, 0.2);
+    }
+    .gatekeeper-btn {
+      background: linear-gradient(135deg, #ffb703 0%, #fb8500 100%);
+      color: #0f111a;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      width: 100%;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+    .gatekeeper-btn:hover {
+      transform: translateY(-2px);
+      opacity: 0.95;
+    }
+    .gatekeeper-btn:active {
+      transform: translateY(0);
+    }
+    .gatekeeper-error {
+      color: #ff4d4d;
+      font-size: 0.9rem;
+      margin-top: 15px;
+      display: none;
+      font-weight: 500;
+    }
+  </style>
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://agrupacionyong.wixsite.com/sipalkidolapampa">
+  <meta property="og:title" content="Sipalki-Do La Pampa - Agrupación YONG">
+  <meta property="og:description" content="Entrená Sipalki-Do en La Pampa. Defensa personal efectiva, disciplina tradicional y formación marcial.">
+  <meta property="og:image" content="logo.svg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="logo.svg">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Gatekeeper Lock Screen -->
+  <div id="gatekeeper-overlay">
+    <div class="gatekeeper-card">
+      <img src="logo.svg" alt="Sipalki-Do Yong Logo" style="width: 90px; height: 90px; margin: 0 auto; display: block;">
+      <h2>SITIO EN DESARROLLO</h2>
+      <p>Este sitio web está en fase de pruebas. Para ver el contenido, por favor ingresá la contraseña.</p>
+      <input type="password" id="gatekeeper-password" class="gatekeeper-input" placeholder="Contraseña de acceso" autofocus>
+      <button id="gatekeeper-submit-btn" class="gatekeeper-btn">Ingresar</button>
+      <div id="gatekeeper-error" class="gatekeeper-error">Contraseña incorrecta. Inténtalo de nuevo.</div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const isAuth = localStorage.getItem('site_authorized_visitor') === 'true';
+      const overlay = document.getElementById('gatekeeper-overlay');
+      
+      if (isAuth) {
+        overlay.style.display = 'none';
+      } else {
+        document.body.classList.add('locked');
+        
+        const checkPass = () => {
+          const pwd = document.getElementById('gatekeeper-password').value;
+          if (pwd.trim().toLowerCase() === 'maestro') {
+            localStorage.setItem('site_authorized_visitor', 'true');
+            overlay.style.transition = 'opacity 0.4s ease';
+            overlay.style.opacity = '0';
+            setTimeout(() => {
+              overlay.style.display = 'none';
+              document.body.classList.remove('locked');
+            }, 400);
+          } else {
+            const errEl = document.getElementById('gatekeeper-error');
+            errEl.style.display = 'block';
+            document.getElementById('gatekeeper-password').value = '';
+            document.getElementById('gatekeeper-password').focus();
+          }
+        };
+
+        document.getElementById('gatekeeper-submit-btn').addEventListener('click', checkPass);
+        document.getElementById('gatekeeper-password').addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') checkPass();
+        });
+      }
+    })();
+  </script>
+
+  <!-- Glassmorphic Header Navigation -->
+  <header id="site-header">
+    <div class="container nav-container">
+      <a href="#inicio" class="logo-wrapper" id="nav-logo-link">
+        <img src="logo.svg" alt="Sipalki-Do Yong Logo" class="logo-img">
+        <div class="logo-text">
+          <span class="logo-title site-name-text">Sipalki-Do La Pampa</span>
+          <span class="logo-subtitle association-text">Agrupación YONG</span>
+        </div>
+      </a>
+      
+      <button class="menu-btn" id="menu-toggle" aria-label="Abrir menú de navegación">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <nav id="main-nav">
+        <ul>
+          <li><a href="#inicio" class="active" id="link-inicio">Inicio</a></li>
+          <li><a href="#filosofia" id="link-filosofia">Filosofía</a></li>
+          <li><a href="#historia" id="link-historia">Historia</a></li>
+          <li><a href="#practica" id="link-practica">Práctica</a></li>
+          <li><a href="#armas" id="link-armas">Armas</a></li>
+          <li><a href="#glosario" id="link-glosario">Glosario</a></li>
+          <li><a href="#sedes" id="link-sedes">Horarios</a></li>
+          <li><a href="#galeria" id="link-galeria">Galería</a></li>
+          <li><a href="#contacto" id="link-contacto">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    
+    <!-- Hero Banner Section -->
+    <section id="inicio" class="hero">
+      <div class="hero-bg">
+        <img src="https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&w=1920&q=80" alt="Practica de Sipalki-Do">
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="container hero-content">
+        <span class="hero-tagline association-text">Agrupación YONG</span>
+        <h1 id="hero-title" class="accent-text">SIPALKI-DO LA PAMPA</h1>
+        <p id="hero-desc" class="hero-description">El camino de las 18 técnicas tradicionales. Defensa personal efectiva, disciplina marcial y acondicionamiento físico en la provincia de La Pampa.</p>
+        <div class="hero-cta">
+          <a href="#sedes" class="btn btn-primary" id="hero-cta-primary"><i class="fas fa-calendar-alt"></i> Ver Horarios y Sedes</a>
+          <a href="#contacto" class="btn btn-secondary" id="hero-cta-secondary"><i class="fas fa-paper-plane"></i> Contactar Ahora</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Philosophy & About Section -->
+    <section id="filosofia" class="section-padding">
+      <div class="container">
+        <div class="section-header text-center">
+          <h2>Filosofía y Valores</h2>
+          <p>Un arte marcial tradicional enfocado en la forja de la mente, el espíritu y la defensa personal real.</p>
+        </div>
+        <div class="philosophy-grid">
+          <div class="about-card" id="about-card-details">
+            <blockquote id="about-quote">"Aquel que se entrena nunca actúa con ligereza ni en la palabra ni en sus hechos, sino que medita seriamente antes de realizar cualquier acto."</blockquote>
+            <cite id="about-quote-author">Filosofía General del Doyang</cite>
+            <p id="about-description" class="about-desc">La Agrupación YONG es una organización dedicada a la práctica y difusión del Sipalki-Do en la provincia de La Pampa. Bajo los lineamientos de la Organización Internacional de Sipalki-Do, nuestra escuela enseña el estilo Ion Bi Ryu ('Secretos de la Golondrina'). Nos enfocamos en la formación moral y física, brindando herramientas de defensa personal aplicadas a situaciones reales de peligro.</p>
+          </div>
+          <div class="peach-box" id="peach-box-card">
+            <div class="peach-graphic"></div>
+            <h3>La Analogía del Durazno</h3>
+            <p id="peach-text">El practicante de Sipalki-Do se rige bajo la analogía del durazno: blando y educado por fuera, pero sumamente duro y firme en su interior espiritual y físico.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive History Timeline Section -->
+    <section id="historia" class="section-padding" style="background-color: var(--bg-secondary);">
+      <div class="container">
+        <div class="section-header text-center">
+          <h2>Nuestra Historia</h2>
+          <p>Los orígenes del Sipalki-Do desde Asia Central hasta su llegada a la provincia de La Pampa en Argentina.</p>
+        </div>
+        <p class="history-intro">Explora los distintos periodos de evolución de nuestro arte marcial. Selecciona una etapa para ver su historia:</p>
+        <div class="timeline-nav" id="timeline-nav">
+          <!-- Timeline Tabs will be rendered here dynamically -->
+        </div>
+        <div class="timeline-container" id="timeline-container">
+          <!-- Timeline active pane will be rendered here dynamically -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Stances and Practice Section -->
+    <section id="practica" class="section-padding">
+      <div class="container">
+        <div class="section-header text-center">
+          <h2>Técnicas y Posiciones</h2>
+          <p>Las bases prácticas que guían el adiestramiento diario de cada practicante de Sipalki.</p>
+        </div>
+        
+        <div class="practice-tabs">
+          <button class="practice-tab active" data-target="pane-pilares" id="tab-pilares">Pilares del Sipalki-Do</button>
+          <button class="practice-tab" data-target="pane-posiciones" id="tab-posiciones">Posiciones (Formas Básicas)</button>
+        </div>
+        
+        <!-- Tab Pane 1: Pillars -->
+        <div class="practice-pane active" id="pane-pilares">
+          <div class="pillars-grid">
+            <div class="pillar-card">
+              <span class="pillar-badge">Defensa</span>
+              <h3>Ho Sin Sul</h3>
+              <p>Es la base del pilar fundamental de este Arte Marcial, uno de los sistemas de defensa personal más completos del mundo. En él se utiliza una gran variedad de técnicas que van desde una simple presión sobre puntos débiles (vitales/letales) hasta zafes rápidos de agarres tanto de pie como en el suelo contra uno o múltiples oponentes.</p>
+            </div>
+            <div class="pillar-card">
+              <span class="pillar-badge">Formas</span>
+              <h3>Ki Bon Dong Yak & Hiong</h3>
+              <p>Las Formas Básicas y Danzas de Combate (Hiong). De su correcta ejecución depende el avance del practicante. Los Hiong son ejercicios pautados estrictamente que emulan combates imaginarios contra múltiples atacantes. Reclaman pulso y precisión y no permiten la improvisación, funcionando como una barrera contra la agresión desmedida.</p>
+            </div>
+            <div class="pillar-card">
+              <span class="pillar-badge">Combate</span>
+              <h3>Cha Iu Derion</h3>
+              <p>La Lucha Libre de práctica. Es lucha sin armas (Kwon Pop) donde las técnicas deben nacer de manera espontánea y natural. En el combate de gimnasio no se busca demostrar superioridad física, sino el manejo limpio y seguro de las técnicas, coordinando cuerpo y mente para una resolución fluida.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Tab Pane 2: Stances -->
+        <div class="practice-pane" id="pane-posiciones">
+          <div class="stances-list">
+            <div class="stance-item">
+              <span class="stance-name">Che-jo-cho-liok-se</span>
+              <span class="stance-desc">El peso va en la pierna de adelante, pierna de atrás flexionada a un puño del piso, los pies miran hacia adelante, manteniendo el ancho de hombros.</span>
+            </div>
+            <div class="stance-item">
+              <span class="stance-name">Juriok-se</span>
+              <span class="stance-desc">Peso al 70% en la pierna de atrás, el pie de atrás va a 45º, el otro pie mira hacia adelante, manteniendo el ancho de hombros.</span>
+            </div>
+            <div class="stance-item">
+              <span class="stance-name">Cho-liok-se</span>
+              <span class="stance-desc">El peso va en la pierna de adelante, pierna de atrás estirada, los pies miran hacia adelante, manteniendo el ancho de hombros.</span>
+            </div>
+            <div class="stance-item">
+              <span class="stance-name">Sung-man-se (Posición de Jinete)</span>
+              <span class="stance-desc">Pies paralelos a ancho y medio de hombros, rodillas flexionadas, peso en el medio del cuerpo.</span>
+            </div>
+            <div class="stance-item">
+              <span class="stance-name">Kokim-se</span>
+              <span class="stance-desc">Peso al 70% en la pierna de atrás, el pie de atrás va a 90º, el otro pie mira hacia adelante, manteniendo el ancho de hombros.</span>
+            </div>
+            <div class="stance-item">
+              <span class="stance-name">Kirip-se (Firmes)</span>
+              <span class="stance-desc">Pies juntos, brazos pegados al costado del cuerpo, vista al frente.</span>
+            </div>
+            <div class="stance-item">
+              <span class="stance-name">Io-charipse</span>
+              <span class="stance-desc">Un pie completamente apoyado y el otro cruzado por detrás apoyando únicamente el metatarso.</span>
+            </div>
+            <div class="stance-item">
+              <span class="stance-name">Che-jo-juriok-se</span>
+              <span class="stance-desc">Peso 70% en la pierna de atrás (posición bien baja), pie posterior a 45º, pie anterior hacia adelante.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Weapons Grid Section -->
+    <section id="armas" class="section-padding" style="background-color: var(--bg-secondary);">
+      <div class="container">
+        <div class="section-header text-center">
+          <h2>Las 14 Armas Tradicionales</h2>
+          <p>El Sipalki-Do conserva las técnicas de combate con las 18 armas antiguas del Muyedobotongji coreano.</p>
+        </div>
+        <div class="weapons-grid">
+          <div class="weapon-card">
+            <div class="weapon-icon"><i class="fas fa-axe"></i></div>
+            <h3>Hacha</h3>
+            <span class="weapon-korean">Toki</span>
+          </div>
+          <div class="weapon-card">
+            <div class="weapon-icon"><i class="fas fa-ellipsis-v"></i></div>
+            <h3>Cinturón</h3>
+            <span class="weapon-korean">Ssan</span>
+          </div>
+          <div class="weapon-card">
+            <div class="weapon-icon"><i class="fas fa-water"></i></div>
+            <h3>Látigo</h3>
+            <span class="weapon-korean">Nang</span>
+          </div>
+          <div class="weapon-card">
+            <div class="weapon-icon"><i class="fas fa-sword"></i></div>
+            <h3>Espada</h3>
+            <span class="weapon-korean">Chung-long-do</span>
+          </div>
+          <div class="weapon-card">
+            <div class="weapon-icon"><i class="fas fa-shield-alt"></i></div>
+            <h3>Escudo</h3>
+            <span class="weapon-korean">Bang-fe</span>
+          </div>
+          <div class="weapon-card">
+            <div class="weapon-icon"><i class="fas fa-compress-arrows-alt"></i></div>
+            <h3>Cuchillo</h3>
+            <span class="weapon-korean">Dang - gom</span>
+          </div>
+          <div class="weapon-card">
+            <div class="weapon-icon"><i class="fas fa-swords"></i></div>
+            <h3>Sable</h3>
+            <span class="weapon-korean">Kom</span>
+          </div>
+          <div class="weapon-card">
+            <div class="weapon-icon"><i class="fas fa-hand-fist"></i></div>
+            <h3>Manopla</h3>
+            <span class="weapon-korean">Juang</span>
+          </div>
+          <div class="weapon-card">
+            <div class="weapon-icon"><i class="fas fa-heading"></i></div>
+            <h3>Bayoneta</h3>
+            <span class="weapon-korean">Chong-gom</span>
+          </div>
+          <div class="weapon-card">
+            <div class="weapon-icon"><i class="fas fa-link"></i></div>
+            <h3>Palos Articulados</h3>
+            <span class="weapon-korean">Nam-gom-dam-bong</span>
+          </div>
+          <div class="weapon-card">
+            <div class="weapon-icon"><i class="fas fa-draw-polygon"></i></div>
+            <h3>Lanza</h3>
+            <span class="weapon-korean">Chang</span>
+          </div>
+          <div class="weapon-card">
+            <div class="weapon-icon"><i class="fas fa-square-full"></i></div>
+            <h3>Palo Largo</h3>
+            <span class="weapon-korean">Bong</span>
+          </div>
+          <div class="weapon-card">
+            <div class="weapon-icon"><i class="fas fa-shield-blank"></i></div>
+            <h3>Dos Cuchillos</h3>
+            <span class="weapon-korean">Ssang-gom</span>
+          </div>
+          <div class="weapon-card">
+            <div class="weapon-icon"><i class="fas fa-location-arrow"></i></div>
+            <h3>Arco y Flecha</h3>
+            <span class="weapon-korean">Kung-sul</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Glossary & Search Section -->
+    <section id="glosario" class="section-padding">
+      <div class="container">
+        <div class="section-header text-center">
+          <h2>Glosario de Términos</h2>
+          <p>Buscá vocablos y técnicas tradicionales en idioma Coreano con su pronunciación fonética y significado.</p>
+        </div>
+        <div class="glossary-search-container">
+          <i class="fas fa-search search-icon"></i>
+          <input type="text" id="glossary-search" class="search-input" placeholder="Buscar término en Coreano o Español...">
+        </div>
+        <div class="glossary-categories" id="glossary-categories">
+          <!-- Category buttons dynamically loaded -->
+        </div>
+        <div class="glossary-grid" id="glossary-grid">
+          <!-- Glossary cards dynamically loaded -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Doyangs, Horarios & Sedes Section -->
+    <section id="sedes" class="section-padding" style="background-color: var(--bg-secondary);">
+      <div class="container">
+        <div class="section-header text-center">
+          <h2>Horarios y Doyangs</h2>
+          <p>Encuentra tu centro de entrenamiento más cercano y los horarios disponibles para comenzar a practicar.</p>
+        </div>
+        <div class="sedes-grid" id="sedes-grid">
+          <!-- Sede Cards dynamically rendered here -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Photo Gallery Section -->
+    <section id="galeria" class="section-padding">
+      <div class="container">
+        <div class="section-header text-center">
+          <h2>Galería de Fotos</h2>
+          <p>Mirá las imágenes de nuestras clases, graduaciones, seminarios y eventos de integración social.</p>
+        </div>
+        <div class="gallery-grid" id="gallery-grid">
+          <!-- Gallery photos dynamically loaded -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact & Communication Section -->
+    <section id="contacto" class="section-padding" style="background-color: var(--bg-secondary);">
+      <div class="container">
+        <div class="section-header text-center">
+          <h2>Sumate a Entrenar</h2>
+          <p>Ponete en contacto directo con los instructores responsables para despejar dudas o coordinar tu primera clase.</p>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-info">
+            <h3>Canales de Comunicación</h3>
+            <p>Escribinos por cualquiera de nuestras plataformas oficiales. Estaremos felices de asesorarte e invitarte a una clase de prueba gratuita.</p>
+            <ul class="contact-links-list">
+              <li>
+                <a href="#" id="contact-email-link" class="logo-wrapper">
+                  <div class="contact-icon-wrapper"><i class="fas fa-envelope"></i></div>
+                  <div>
+                    <strong style="display:block; font-size:0.85rem; color:var(--text-muted);">Correo Electrónico</strong>
+                    <span id="contact-email-text">sipalkidolapampa@gmail.com</span>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="#" id="contact-wa-link" target="_blank" class="logo-wrapper">
+                  <div class="contact-icon-wrapper"><i class="fab fa-whatsapp"></i></div>
+                  <div>
+                    <strong style="display:block; font-size:0.85rem; color:var(--text-muted);">WhatsApp Consultas</strong>
+                    <span id="contact-wa-text">+54 2954 556677</span>
+                  </div>
+                </a>
+              </li>
+            </ul>
+            
+            <h3>Redes Sociales</h3>
+            <div class="social-bar">
+              <a href="#" target="_blank" id="contact-ig-link" class="social-icon" aria-label="Seguinos en Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="#" target="_blank" id="contact-fb-link" class="social-icon" aria-label="Seguinos en Facebook"><i class="fab fa-facebook-f"></i></a>
+            </div>
+          </div>
+          
+          <div class="contact-form">
+            <h3>Envianos un Mensaje</h3>
+            <form id="contact-form-el" action="#" method="POST" style="margin-top:20px;">
+              <div class="form-group">
+                <label for="form-name">Nombre y Apellido *</label>
+                <input type="text" id="form-name" class="form-control" placeholder="Tu nombre" required>
+              </div>
+              <div class="form-group">
+                <label for="form-email">Correo Electrónico *</label>
+                <input type="email" id="form-email" class="form-control" placeholder="nombre@correo.com" required>
+              </div>
+              <div class="form-group">
+                <label for="form-phone">Teléfono de Contacto</label>
+                <input type="tel" id="form-phone" class="form-control" placeholder="Prefijo + número sin 15">
+              </div>
+              <div class="form-group">
+                <label for="form-message">Consulta o Mensaje *</label>
+                <textarea id="form-message" class="form-control" placeholder="¿En qué sede te interesaría comenzar?" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary" style="width: 100%;"><i class="fas fa-paper-plane"></i> Enviar Consulta</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer Section -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="logo-wrapper">
+          <img src="logo.svg" alt="Sipalki Yong Logo" class="logo-img" style="width:40px; height:40px;">
+          <div class="logo-text">
+            <span class="logo-title site-name-text">Sipalki-Do La Pampa</span>
+            <span class="logo-subtitle association-text">Agrupación YONG</span>
+          </div>
+        </div>
+        <p>Preservando el arte marcial tradicional coreano y sus valores éticos.</p>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 <span class="site-name-text">Sipalki-Do La Pampa</span>. Todos los derechos reservados.</span>
+        <div>
+          <button class="admin-link-btn" id="admin-open-btn"><i class="fas fa-lock"></i> Panel Administrativo</button>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox Modal for Photo Gallery -->
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-content">
+      <button class="lightbox-close"><i class="fas fa-times"></i></button>
+      <img src="" alt="" class="lightbox-img">
+      <h3 class="lightbox-title"></h3>
+    </div>
+  </div>
+
+  <!-- Dynamic Settings Panel Modal (Admin Panel) -->
+  <div class="modal" id="admin-modal">
+    <div class="modal-overlay"></div>
+    <div class="modal-container">
+      <div class="modal-header">
+        <h2>Panel de Administración - Contenidos del Sitio</h2>
+        <button class="modal-close"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body">
+        
+        <!-- Authentication Section -->
+        <form id="admin-auth-form" class="auth-form">
+          <h3>Ingreso de Administrador</h3>
+          <p style="color:var(--text-muted); margin-bottom:20px; font-size:0.9rem;">Ingrese la clave de seguridad para editar contactos, horarios y fotos.</p>
+          <div class="form-group" style="max-width: 300px; margin: 0 auto 20px;">
+            <input type="password" id="admin-password-input" class="form-control text-center" placeholder="Clave de seguridad" required>
+          </div>
+          <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i> Ingresar</button>
+        </form>
+
+        <!-- Authenticated Administration Workspace -->
+        <div id="admin-panel-content" class="admin-layout" style="display:none;">
+          <div class="admin-nav">
+            <button class="admin-nav-btn active" data-target="#admin-sec-general">Textos Generales</button>
+            <button class="admin-nav-btn" data-target="#admin-sec-sedes">Sedes y Horarios</button>
+            <button class="admin-nav-btn" data-target="#admin-sec-fotos">Galería de Fotos</button>
+            <button class="admin-nav-btn" data-target="#admin-sec-seguridad">Seguridad</button>
+          </div>
+          
+          <div class="admin-content">
+            
+            <!-- Section 1: General Texts & Contacts -->
+            <div class="admin-panel active" id="admin-sec-general">
+              <h3 style="margin-bottom:15px; color:var(--accent-gold);">Textos de Portada</h3>
+              <div class="form-group">
+                <label>Título Principal Banner</label>
+                <input type="text" id="adm-hero-title" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>Subtítulo Banner</label>
+                <input type="text" id="adm-hero-subtitle" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>Descripción del Banner</label>
+                <textarea id="adm-hero-desc" class="form-control"></textarea>
+              </div>
+              
+              <h3 style="margin:25px 0 15px; color:var(--accent-gold);">Sección Nosotros y Filosofía</h3>
+              <div class="form-group">
+                <label>Cita del Doyang</label>
+                <textarea id="adm-about-quote" class="form-control"></textarea>
+              </div>
+              <div class="form-group">
+                <label>Descripción Nosotros</label>
+                <textarea id="adm-about-desc" class="form-control" style="min-height:100px;"></textarea>
+              </div>
+              <div class="form-group">
+                <label>Texto Analogía Durazno</label>
+                <textarea id="adm-about-peach" class="form-control"></textarea>
+              </div>
+
+              <h3 style="margin:25px 0 15px; color:var(--accent-gold);">Canales de Contacto General</h3>
+              <div class="form-group">
+                <label>Email de contacto</label>
+                <input type="email" id="adm-contact-email" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>WhatsApp (Sin símbolo '+', sin espacios, con código de país. Ej: 542954556677)</label>
+                <input type="text" id="adm-contact-wa" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>URL de Instagram</label>
+                <input type="url" id="adm-contact-ig" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>URL de Facebook</label>
+                <input type="url" id="adm-contact-fb" class="form-control">
+              </div>
+            </div>
+
+            <!-- Section 2: Sedes list editing -->
+            <div class="admin-panel" id="admin-sec-sedes">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+                <h3 style="color:var(--accent-gold);">Listado de Sedes y Horarios</h3>
+                <button type="button" class="btn btn-secondary" id="admin-add-sede-btn" style="padding:6px 12px; font-size:0.75rem;"><i class="fas fa-plus"></i> Añadir Sede</button>
+              </div>
+              <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:10px;">Edita las sedes directamente en la tabla inferior:</p>
+              <div style="overflow-x:auto;">
+                <table class="admin-table">
+                  <thead>
+                    <tr>
+                      <th style="min-width:140px;">Nombre Sede</th>
+                      <th style="min-width:140px;">Dirección</th>
+                      <th style="min-width:145px;">Instructor / Dan</th>
+                      <th style="min-width:145px;">Días / Horarios</th>
+                      <th style="min-width:110px;">WhatsApp Consultas</th>
+                      <th style="width:50px;"></th>
+                    </tr>
+                  </thead>
+                  <tbody id="admin-sedes-tbody">
+                    <!-- Loaded dynamically -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Section 3: Gallery Editing -->
+            <div class="admin-panel" id="admin-sec-fotos">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+                <h3 style="color:var(--accent-gold);">Administración de Galería</h3>
+                <button type="button" class="btn btn-secondary" id="admin-add-photo-btn" style="padding:6px 12px; font-size:0.75rem;"><i class="fas fa-plus"></i> Añadir Foto</button>
+              </div>
+              <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:10px;">Carga URLs públicas de fotos (puedes usar hosting externo o Unsplash) y su pie de imagen:</p>
+              <div style="overflow-x:auto;">
+                <table class="admin-table">
+                  <thead>
+                    <tr>
+                      <th style="width:60px;">Previo</th>
+                      <th>URL de la Imagen</th>
+                      <th>Título / Descripción</th>
+                      <th style="width:50px;"></th>
+                    </tr>
+                  </thead>
+                  <tbody id="admin-gallery-tbody">
+                    <!-- Loaded dynamically -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Section 4: Security (Password Modification) -->
+            <div class="admin-panel" id="admin-sec-seguridad">
+              <h3 style="margin-bottom:15px; color:var(--accent-gold);">Cambiar Clave de Seguridad</h3>
+              <p style="color:var(--text-muted); font-size:0.85rem; margin-bottom:20px;">Edita la contraseña necesaria para ingresar a este panel administrativo.</p>
+              <div class="form-group" style="max-width:300px;">
+                <label>Nueva contraseña</label>
+                <input type="text" id="adm-password-new" class="form-control">
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary admin-cancel-btn">Cerrar</button>
+        <button class="btn btn-danger" id="admin-reset-btn" style="display:none; margin-right:auto;"><i class="fas fa-undo"></i> Reset Fábrica</button>
+        <button class="btn btn-secondary" id="admin-save-btn" style="display:none;"><i class="fas fa-save"></i> Guardar Prueba (Navegador)</button>
+        <button class="btn btn-primary" id="admin-export-btn" style="display:none;"><i class="fas fa-file-download"></i> Descargar config.json</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification System -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Main JavaScript Logic -->
+  <script src="app.js"></script>
+
+  <!-- Script to toggle Reset & Save buttons visibilities in admin panel after authentication -->
+  <script>
+    document.getElementById('admin-auth-form').addEventListener('submit', function() {
+      // Toggle button visibility once validated
+      setTimeout(function() {
+        if (adminAuthenticated) {
+          document.getElementById('admin-save-btn').style.display = 'inline-flex';
+          document.getElementById('admin-reset-btn').style.display = 'inline-flex';
+          document.getElementById('admin-export-btn').style.display = 'inline-flex';
+        }
+      }, 50);
+    });
+  </script>
+</body>
+</html>

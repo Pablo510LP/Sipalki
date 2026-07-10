@@ -1,0 +1,97 @@
+{
+  "siteName": "Sipalki-Do La Pampa",
+  "association": "Agrupación YONG",
+  "adminPassword": "yongadmin123",
+  "hero": {
+    "title": "SIPALKI-DO LA PAMPA",
+    "subtitle": "Agrupación YONG",
+    "description": "El camino de las 18 técnicas tradicionales. Defensa personal efectiva, disciplina marcial y acondicionamiento físico en la provincia de La Pampa."
+  },
+  "about": {
+    "title": "Nuestra Agrupación",
+    "quote": "Aquel que se entrena nunca actúa con ligereza ni en la palabra ni en sus hechos, sino que medita seriamente antes de realizar cualquier acto.",
+    "quoteAuthor": "Filosofía General del Doyang",
+    "description": "La Agrupación YONG es una organización dedicada a la práctica y difusión del Sipalki-Do en la provincia de La Pampa. Bajo los lineamientos de la Organización Internacional de Sipalki-Do, nuestra escuela enseña el estilo Ion Bi Ryu ('Secretos de la Golondrina'). Nos enfocamos en la formación moral y física, brindando herramientas de defensa personal aplicadas a situaciones reales de peligro.",
+    "peachText": "El practicante de Sipalki-Do se rige bajo la analogía del durazno: blando y educado por fuera, pero sumamente duro y firme en su interior espiritual y físico."
+  },
+  "contacts": {
+    "email": "sipalkidolapampa@gmail.com",
+    "whatsapp": "542954556677",
+    "instagram": "https://www.instagram.com/sipalki.lapampa",
+    "facebook": "https://www.facebook.com/sipalki.lapampa"
+  },
+  "sedes": [
+    {
+      "id": "plan-5000",
+      "name": "Comisión Vecinal Barrio Plan 5000",
+      "address": "Bertera y Gral. Acha, Santa Rosa",
+      "instructor": "Sabom Ruben Tellechea",
+      "rank": "Cinturón Negro - III Dan",
+      "days": "Martes y Jueves",
+      "hours": "20:00 hs. a 21:30 hs.",
+      "whatsapp": "542954556677"
+    },
+    {
+      "id": "esperanza",
+      "name": "SUM Barrio Esperanza",
+      "address": "Toscano Sur y Cavero, Santa Rosa",
+      "instructor": "Sabom Ruben Tellechea",
+      "rank": "Cinturón Negro - III Dan",
+      "days": "Lunes y Miércoles",
+      "hours": "20:30 hs. a 21:45 hs.",
+      "whatsapp": "542954556677"
+    },
+    {
+      "id": "yayo-gym",
+      "name": "Yayo Gym",
+      "address": "E. Mitre 65, Santa Rosa",
+      "instructor": "Maestro Martín Zabala",
+      "rank": "Cinturón Negro - V Dan",
+      "days": "Martes y Jueves",
+      "hours": "21:30 hs. a 22:30 hs.",
+      "whatsapp": "542954112233"
+    },
+    {
+      "id": "suboficiales",
+      "name": "Casino de Suboficiales",
+      "address": "Av. Spinetto y Gardel, Santa Rosa",
+      "instructor": "Maestro Lucas Rodríguez",
+      "rank": "Cinturón Negro - V Dan",
+      "days": "Lunes y Miércoles",
+      "hours": "20:00 hs. a 21:30 hs.",
+      "whatsapp": "542954448899"
+    }
+  ],
+  "gallery": [
+    {
+      "id": 1,
+      "url": "https://images.unsplash.com/photo-1555597673-b21d5c935865?auto=format&fit=crop&w=1200&q=80",
+      "title": "Entrenamiento de técnicas con sables tradicionales"
+    },
+    {
+      "id": 2,
+      "url": "https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&w=1200&q=80",
+      "title": "Exámenes y graduación de cinturones negros"
+    },
+    {
+      "id": 3,
+      "url": "https://images.unsplash.com/photo-1517438476312-10d79c077509?auto=format&fit=crop&w=1200&q=80",
+      "title": "Práctica al aire libre y acondicionamiento"
+    },
+    {
+      "id": 4,
+      "url": "https://images.unsplash.com/photo-1544033527-b192daee1f5b?auto=format&fit=crop&w=1200&q=80",
+      "title": "Concentración y formas básicas individuales"
+    },
+    {
+      "id": 5,
+      "url": "https://images.unsplash.com/photo-1555597673-20dc2741d4b6?auto=format&fit=crop&w=1200&q=80",
+      "title": "Práctica infantil: defensa personal y juego"
+    },
+    {
+      "id": 6,
+      "url": "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1200&q=80",
+      "title": "El Doyang: respeto mutuo y perseverancia"
+    }
+  ]
+}
