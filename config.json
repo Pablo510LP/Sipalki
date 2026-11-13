@@ -43,12 +43,12 @@
     },
     {
       "id": "yayo-gym",
-      "name": "Yayo Gym",
-      "address": "E. Mitre 65, Santa Rosa",
+      "name": "Unidad Básica Villa Alonso",
+      "address": "E. Mitre 48, Santa Rosa",
       "instructor": "Maestro Martín Zabala",
       "rank": "Cinturón Negro - V Dan",
-      "days": "Martes y Jueves",
-      "hours": "21:30 hs. a 22:30 hs.",
+      "days": "Lunes y Miércoles",
+      "hours": "20:30 hs. a 21:30 hs.",
       "whatsapp": "542954112233"
     },
     {
@@ -70,7 +70,7 @@
     },
     {
       "id": 2,
-      "url": "https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&w=1200&q=80",
+      "url": "https://scontent.fmdz5-1.fna.fbcdn.net/v/t39.30808-6/855578531_10238671668003628_5358826499802057063_n.jpg?stp=dst-jpg_tt6&cstp=mx1599x899&ctp=s1599x899&_nc_cat=105&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFzSSIsabWbjZYinTpTO3AuJ7ZV-uORye4ntlX645HJ7lOp6Bi-d1EtvdgPlO52ADgKlimPblCpW8Q9zhNFsT66&_nc_ohc=3i5fj6qCq1QQ7kNvwH-XteF&_nc_oc=AdqZTpSKZ3K5DYt2qBS6FisKR5vTI_9qpr325eZRCEyVvlyZy4KAt6wrWQEHEcRUkRo&_nc_zt=23&_nc_ht=scontent.fmdz5-1.fna&_nc_gid=1O8mSb6fiRa3nIXq3uxGRg&_nc_ss=7b2a8&oh=00_AQSl-WVZ0pTLULNiy4PS69_RecLftdiz1ALtri8DwgvxUg&oe=6AE84B48",
       "title": "Exámenes y graduación de cinturones negros"
     },
     {
